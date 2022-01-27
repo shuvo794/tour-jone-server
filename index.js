@@ -35,9 +35,25 @@ async function run() {
     });
 
     // get all the products from the database API
+    // get all the products from the database
     app.get("/products", async (req, res) => {
-      const products = await productsCollection.find({}).toArray();
-      res.json(products);
+      const cursor = productsCollection.find({});
+      const page = req.query.page;
+      const size = parseInt(req.query.size);
+      let products;
+      const count = await cursor.count();
+      if (page) {
+        products = await cursor
+          .skip(page * size)
+          .limit(size)
+          .toArray();
+      } else {
+        products = await cursor.toArray();
+      }
+      res.send({
+        count,
+        products,
+      });
     });
     // get a single product from the database
     app.get("/products/:id", async (req, res) => {
