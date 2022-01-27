@@ -34,7 +34,7 @@ async function run() {
       res.json(result);
     });
 
-    // get all the products from the database
+    // get all the products from the database API
     app.get("/products", async (req, res) => {
       const products = await productsCollection.find({}).toArray();
       res.json(products);
