@@ -62,17 +62,20 @@ async function run() {
       });
       res.json(product);
     });
+
     // delete a product from the database
     app.delete("/products/:id", async (req, res) => {
       const id = req.params.id;
       const result = await productsCollection.deleteOne({ _id: ObjectId(id) });
       res.json(result);
     });
+
     // get all the reviews from the database
     app.get("/reviews", async (req, res) => {
       const reviews = await reviewsCollection.find({}).toArray();
       res.json(reviews);
     });
+
     // post a review to the database
     app.post("/reviews", async (req, res) => {
       const review = req.body;
