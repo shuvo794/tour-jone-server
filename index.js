@@ -127,6 +127,7 @@ async function run() {
       }
       res.json({ admin: isAdmin });
     });
+
     // make an admin
     app.put("/users/admin", async (req, res) => {
       const user = req.body;
