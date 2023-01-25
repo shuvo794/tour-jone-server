@@ -29,7 +29,7 @@ async function run() {
     // post a product to the database
     app.post("/products", async (req, res) => {
       const product = req.body;
-      // console.log(product);
+
       const result = await productsCollection.insertOne(product);
       res.json(result);
     });
