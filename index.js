@@ -79,12 +79,14 @@ async function run() {
       const newReview = await reviewsCollection.insertOne(review);
       res.json(newReview);
     });
+
     // save a user to database
     app.post("/users", async (req, res) => {
       const user = req.body;
       const result = await usersCollection.insertOne(user);
       res.json(result);
     });
+
     // save orders to the database
     app.post("/orders", async (req, res) => {
       const order = req.body;
