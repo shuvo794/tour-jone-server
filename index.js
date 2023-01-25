@@ -35,7 +35,7 @@ async function run() {
     });
 
     // get all the products from the database API
-    // get all the products from the database
+
     app.get("/products", async (req, res) => {
       const cursor = productsCollection.find({});
       const page = req.query.page;
