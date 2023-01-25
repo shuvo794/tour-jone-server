@@ -25,7 +25,8 @@ async function run() {
     const reviewsCollection = database.collection("reviews");
     const usersCollection = database.collection("users");
     const ordersCollection = database.collection("orders");
-    console.log("db connected");
+    // console.log("db connected");
+
     // post a product to the database
     app.post("/products", async (req, res) => {
       const product = req.body;
