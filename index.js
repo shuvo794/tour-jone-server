@@ -96,6 +96,7 @@ async function run() {
       const orders = await ordersCollection.find({}).toArray();
       res.json(orders);
     });
+
     // get order by query
     app.get("/orders/:email", async (req, res) => {
       const orders = await ordersCollection
@@ -103,12 +104,14 @@ async function run() {
         .toArray();
       res.json(orders);
     });
+
     // delete an order from the database
     app.delete("/orders/:id", async (req, res) => {
       const id = req.params.id;
       const result = await ordersCollection.deleteOne({ _id: ObjectId(id) });
       res.json(result);
     });
+
     // update an order by id
     app.put("/orders", async (req, res) => {
       const id = req.query.id;
